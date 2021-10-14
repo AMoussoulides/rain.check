@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+	
+	
+
+	 <!-- Required meta tags always come first -->
+	 <meta charset="utf-8">
+	 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	 <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
+
+<link rel="stylesheet" href="css/weather-icons.min.css">
+
+
+<title>Rain-Check</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css">
+<script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css">
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="js/lrm-graphhopper.js"></script>
+<link rel="stylesheet" href="node_modules\leaflet-easybutton\src\easy-button.css">
+<script src="node_modules\leaflet-easybutton\src\easy-button.js"></script>
+<link href="node_modules\@fortawesome\fontawesome-free\css\all.css" rel="stylesheet">
+
+<link rel="stylesheet" href="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.css">
+
+<script src="//cdn.jsdelivr.net/chartist.js/latest/chartist.min.js"></script>
+
+
+
+
+</head>
+
+
+<body>
+
+		 
+		 <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+			 
+			<a class="navbar-brand" href="index.html"><img src="img/umbrella-svgrepo-com.svg" height="40" width="40"> rain-check</a>
+			
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+						<span class="navbar-toggler-icon"></span>
+					</button>
+					
+					
+					
+					<div class="collapse navbar-collapse" id="Navbar">
+					<ul class="navbar-nav mr-auto">
+						 <li class="nav-item"></li> <a class="nav-link" href="index.html"> Home</a>
+						 <li class="nav-item"></li> <a class="nav-link" href="about.html">About</a>
+						 
+					</ul>
+					<span class="navbar-text">
+						<a id="loginbutt">
+						
+						</a>
+					</span>
+					
+				</div>
+			</nav> 
+
+
+
+
+<div class="container">
+
+	<div class="row">
+		<div class="col-md-12" id="mapid"></div>
+
+	
+
+
+	
+		<p class="col-md-12" id="location" style="display: none;"></p>
+	
+
+	</div>
+
+	<div class="row">
+		<hr class="col-md-12" id="breakinfo0" style="display: none;">
+	</div>
+
+	<div class="row">
+	
+		<h3 class="col-md-6" id="routesummarylabel" style="display: none;"></h3>
+
+
+		<h5 class="col-md-6" id="routesummary" style="display: none;"></h5>
+
+	</div>
+
+	<div class="row">
+		<hr class="col-md-12" id="breakinfo1" style="display: none;">
+	</div>
+
+	<div class="row">
+
+		<h3 class="col-md-6" id="weathersummarylabel" style="display: none;"></h3>
+
+		
+
+		
+	
+
+		<h5 class="col-md-6" id="weathersummary" style="display: none;"></h5>
+
+	
+	</div>
+
+	<div class="row">
+		<hr class="col-md-12" id="breakinfo2" style="display: none;">
+	</div>
+
+	<br><br>
+
+	<div class="row">
+
+		<!-- Card -->
+<div class="card weather-card col-md-3" id="card0" style="display: none;">
+
+	<!-- Card content -->
+	<div class="card-body pb-2">
+  
+	  <!-- Title -->
+	  
+	  <!-- Text -->
+	  <h5 class="card-text" id="cardday0">Tuesday</h5>
+
+	  <p class="card-text" id="cardsummary0">Mostly Sunny</p>
+	  <div class="d-flex justify-content-between">
+		<p class="display-3" id="cardtemp0">23</p>
+		
+	  </div>
+	  <div class="d-flex justify-content-between mb-4">
+		<i class="fas fa-tint fa-lg text-info"></i>
+		<p id="cardprecip0"></p>
+		<i class="fas fa-leaf fa-lg grey-text"></i>
+		<p id="cardwind0"></p><p></p>
+	  </div>
+		
+	</div>
+</div>
+
+<div class="card weather-card col-md-3" id="card1" style="display: none;">
+
+	<!-- Card content -->
+	<div class="card-body pb-2">
+  
+	  <!-- Title -->
+	  
+	  <!-- Text -->
+	  <h5 class="card-text" id="cardday1">Tuesday</h5>
+
+	  <p class="card-text" id="cardsummary1">Mostly Sunny</p>
+	  <div class="d-flex justify-content-between">
+		<p class="display-3" id="cardtemp1">23</p>
+		
+	  </div>
+	  <div class="d-flex justify-content-between mb-4">
+		<i class="fas fa-tint fa-lg text-info"></i>
+		<p id="cardprecip1"></p>
+		<i class="fas fa-leaf fa-lg grey-text"></i>
+		<p id="cardwind1"></p><p></p>
+	  </div>
+		
+	</div>
+</div>
+
+<div class="card weather-card col-md-3" id="card2" style="display: none;">
+
+	<!-- Card content -->
+	<div class="card-body pb-2">
+  
+	  <!-- Title -->
+	  
+	  <!-- Text -->
+	  <h5 class="card-text" id="cardday2">Tuesday</h5>
+
+	  <p class="card-text" id="cardsummary2">Mostly Sunny</p>
+	  <div class="d-flex justify-content-between">
+		<p class="display-3" id="cardtemp2">23</p>
+		
+	  </div>
+	  <div class="d-flex justify-content-between mb-4">
+		<i class="fas fa-tint fa-lg text-info"></i>
+		<p id="cardprecip2"></p>
+		<i class="fas fa-leaf fa-lg grey-text"></i>
+		<p id="cardwind2"></p><p></p>
+	  </div>
+		
+	</div>
+</div>
+
+<div class="card weather-card col-md-3" id="card3" style="display: none;">
+
+	<!-- Card content -->
+	<div class="card-body pb-2">
+  
+	  <!-- Title -->
+	  
+	  <!-- Text -->
+	  <h5 class="card-text" id="cardday3">Tuesday</h5>
+
+	  <p class="card-text" id="cardsummary3">Mostly Sunny</p>
+	  <div class="d-flex justify-content-between">
+		<p class="display-3" id="cardtemp3">23</p>
+		
+	  </div>
+	  <div class="d-flex justify-content-between mb-4">
+		<i class="fas fa-tint fa-lg text-info"></i>
+		<p id="cardprecip3"></p>
+		<i class="fas fa-leaf fa-lg grey-text"></i>
+		<p id="cardwind3"></p><p></p>
+	  </div>
+		
+	</div>
+</div>
+
+<div class="card weather-card col-md-3" id="card4" style="display: none;">
+
+	<!-- Card content -->
+	<div class="card-body pb-2">
+  
+	  <!-- Title -->
+	  
+	  <!-- Text -->
+	  <h5 class="card-text" id="cardday4">Tuesday</h5>
+
+	  <p class="card-text" id="cardsummary4">Mostly Sunny</p>
+	  <div class="d-flex justify-content-between">
+		<p class="display-3" id="cardtemp4">23</p>
+		
+	  </div>
+	  <div class="d-flex justify-content-between mb-4">
+		<i class="fas fa-tint fa-lg text-info"></i>
+		<p id="cardprecip4"></p>
+		<i class="fas fa-leaf fa-lg grey-text"></i>
+		<p id="cardwind4"></p><p></p>
+	  </div>
+		
+	</div>
+</div>
+
+<div class="card weather-card col-md-3" id="card5" style="display: none;">
+
+	<!-- Card content -->
+	<div class="card-body pb-2">
+  
+	  <!-- Title -->
+	  
+	  <!-- Text -->
+	  <h5 class="card-text" id="cardday5">Tuesday</h5>
+
+	  <p class="card-text" id="cardsummary5">Mostly Sunny</p>
+	  <div class="d-flex justify-content-between">
+		<p class="display-3" id="cardtemp5">23</p>
+		
+	  </div>
+	  <div class="d-flex justify-content-between mb-4">
+		<i class="fas fa-tint fa-lg text-info"></i>
+		<p id="cardprecip5"></p>
+		<i class="fas fa-leaf fa-lg grey-text"></i>
+		<p id="cardwind5"></p><p></p>
+	  </div>
+		
+	</div>
+</div>
+
+<div class="card weather-card col-md-3" id="card6" style="display: none;">
+
+	<!-- Card content -->
+	<div class="card-body pb-2">
+  
+	  <!-- Title -->
+	  
+	  <!-- Text -->
+	  <h5 class="card-text" id="cardday6">Tuesday</h5>
+
+	  <p class="card-text" id="cardsummary6">Mostly Sunny</p>
+	  <div class="d-flex justify-content-between">
+		<p class="display-3" id="cardtemp6">23</p>
+		
+	  </div>
+	  <div class="d-flex justify-content-between mb-4">
+		<i class="fas fa-tint fa-lg text-info"></i>
+		<p id="cardprecip6"></p>
+		<i class="fas fa-leaf fa-lg grey-text"></i>
+		<p id="cardwind6"></p><p></p>
+	  </div>
+		
+	</div>
+</div>
+
+</div>
+
+<br><br>
+
+<div class="row">
+	<hr class="col-md-12" id="breakinfo6" style="display: none;">
+</div>
+
+ <br><br><br><br>
+
+	<div class="row">
+		
+		<h5 class="col-md-12 col-xs-12" id="timechartlabel" style="display: none;"></h5>
+
+		<br><br><br><br>
+
+		<div class="ct-chart ct-major-tenth col-md-12 col-xs-12" id="timechart" style="display: none;"></div>
+
+		<br><br><br><br>
+
+		<p class="col-md-1 col-xs-1" id="minlabel"></p> 
+		<select class="col-md-2 col-3" id="minutes" style="display: none;"></select>
+	</div>
+
+	<div class="row">
+		<hr class="col-md-12" id="breakinfo3" style="display: none;">
+	</div>
+
+		<br><br>
+
+	<div class="row">
+		<h5 class="col-md-12 col-xs-12" id="sumchartlabel" style="display: none;"></h5>
+
+		<br><br><br><br>
+
+		<div class="ct-chart ct-major-tenth col-md-12 col-xs-12" id="sumchart" style="display: none;"></div>
+	</div>
+
+	<div class="row">
+		<hr class="col-md-12" id="breakinfo4" style="display: none;">
+	</div>
+
+	<div class="row">
+
+		<h5 class="col-md-12 col-xs-12 md-2" id="puddles" style="display: none;"></h5>
+
+		<h5 class="col-md-12 col-xs-12 md-2" id="alerts" style="display: none;"></h5>
+
+		<h5 class="col-md-12 col-xs-12 md-2" id="besttime" style="display: none;"></h5>
+
+
+
+		
+	</div>
+
+	<div class="row">
+		<hr class="col-md-12" id="breakinfo5" style="display: none;">
+	</div>
+
+	<div class="row">
+		<p class="col-md-12 col-xs-12" id="emaillabel" style="display: none;"></p>
+
+		<input class="col-md-2 col-6 offset-md-2 mr-1" id="emailtext" style="display: none;">
+
+		<button class="col-md-1 col-4 ml-1" id="emailbtn" style="display: none;"></button>
+
+		<p class="col-md-1 col-4" id="emailsuccess"></p>
+		
+	</div>
+
+	
+
+
+</div>
+
+<br><br><br><br>
+
+	
+
+
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+
+<script src="js/index.js"></script>
+<script src="node_modules/chartist-plugin-axistitle/dist/chartist-plugin-axistitle.js"></script>
+
+
+
+
+
+</body>
+
+
+
+</html>

@@ -1,0 +1,47 @@
+{
+  "name": "weather-based-journey-app",
+  "version": "1.0.0",
+  "description": "A web application for weather based journeys using the MERN Stack",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
+  },
+  "author": "Antonis Moussoulides",
+  "license": "ISC",
+  "dependencies": {
+    "concurrently": "^5.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.4",
+    "node-fetch": "^2.6.0",
+    "nodemailer": "^6.4.2",
+    "sendpulse-api": "^1.1.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "babelify": "^10.0.0",
+    "browser-sync": "^2.26.7",
+    "browserify": "^16.5.1",
+    "connect-browser-sync": "^2.1.0",
+    "cssnano": "^4.1.10",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-clean-css": "^4.3.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-htmlmin": "^5.0.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-postcss": "^8.0.0",
+    "gulp-require-modules": "^1.1.4",
+    "gulp-uglify-es": "^2.0.0",
+    "gulp-usemin": "^0.3.30",
+    "nodemon": "^1.19.3",
+    "readable-stream": "^3.6.0",
+    "vinyl-buffer": "^1.0.1",
+    "vinyl-source-stream": "^2.0.0"
+  }
+}

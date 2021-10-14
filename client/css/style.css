@@ -1,0 +1,73 @@
+
+
+    body { margin:0; padding:0; }
+
+    .navbar-dark {
+		background-color: #313D4B;
+		
+	}
+
+	body {
+		padding: 0;
+		margin: 0;
+	}
+
+	.navbar {
+		opacity: 1;
+		transition: opacity 0.5s ease;
+		
+	}
+	
+	.navbar-hide {
+		pointer-events: none;
+		opacity: 0;
+	}
+
+	
+
+      #mapid { 
+	height: 600px;
+    width: 800px;
+    margin-left: 2%;
+    margin-right: auto;
+	margin-top: 8em;
+	margin-bottom: auto; 
+	} 
+	 
+
+	 #location { 
+    margin-left: 2%;
+    
+	margin-top: 6em;
+	 
+	}
+
+	p.card-text{
+		font-size:16px;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+
+		
+
+
+	@keyframes dashoffset-seven {
+  0% {
+    stroke-dashoffset: 7px;
+  }
+
+  
+  100% {
+    stroke-dashoffset: 0px;
+  }
+}
+
+.ct-chart .ct-series.ct-series-a .ct-line {
+  
+  stroke-width: 6px;
+  stroke-dasharray: 5px 2px;
+  animation: dashoffset-seven 200ms infinite linear;
+}
+
