@@ -34,7 +34,7 @@ You will also need:
 Firstly clone the repo:
 
 ```
-git clone https://cseegit.essex.ac.uk/ce301_2019/ce301_moussoulides_a.git
+git clone https://github.com/AMoussoulides/rain.check
 ```
 
 Then to install all the required dependencies, on the root directory of the project and the  ``` client ``` folder type:
